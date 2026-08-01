@@ -10,7 +10,7 @@
 Pack & Go Vacation | Tour Packages & Vehicle Rentals in Madurai
 
 **Meta description (155 chars):**
-Madurai-based tour operator offering all-India holiday packages, bike trips, and car & bike rentals. Beaches, hill stations, heritage. Call 93429 37594.
+Madurai-based tour operator offering all-India holiday packages, bike trips, and car & bike rentals. Beaches, hill stations, heritage. Call 63691 53144.
 
 **Primary keywords to weave in naturally:**
 tour packages Madurai · Madurai travel agency · bike trip packages Tamil Nadu · car rental Madurai · Goa package from Madurai · Kerala tour package Madurai
@@ -19,7 +19,7 @@ tour packages Madurai · Madurai travel agency · bike trip packages Tamil Nadu 
 Home · Packages · Rentals · Why Us · Reviews · Contact
 → Right side button: **WhatsApp Us**
 
-**Floating button (mobile, bottom-right):** WhatsApp icon → `wa.me/919342937594`
+**Floating button (mobile, bottom-right):** WhatsApp icon → `wa.me/916369153144`
 
 ---
 
@@ -34,7 +34,7 @@ Pack Your Bags. We'll Handle the Rest.
 Curated holiday packages, guided bike trips, and self-drive rentals — planned end to end by a team that actually travels these routes.
 
 **Primary CTA button:** Plan My Trip on WhatsApp
-**Secondary CTA button:** Call 93429 37594
+**Secondary CTA button:** Call 63691 53144
 
 **Trust strip under the buttons (icons + text):**
 `[[TO CONFIRM]] years running` · Custom itineraries · Transparent pricing · Support throughout your trip
@@ -279,7 +279,7 @@ Grid of 8–12 real photos from your trips. Warkala cliffs, Goa beaches, Munnar 
 **H2:** Questions people ask
 
 **How do I book a package?**
-Message us on WhatsApp at 93429 37594 or call us directly. Tell us your destination, dates, and group size, and we'll send an itinerary and quote.
+Message us on WhatsApp at 63691 53144 or call us directly. Tell us your destination, dates, and group size, and we'll send an itinerary and quote.
 
 **How much advance do I have to pay?**
 `[[TO CONFIRM]]`% of the total at the time of booking, with the balance due `[[TO CONFIRM]]`.
@@ -310,7 +310,7 @@ We pick up from anywhere in Madurai city. Pickups from other locations can be ar
 
 **Body:** Tell us where you want to go. We'll take it from there.
 
-**Buttons:** WhatsApp Us · Call 93429 37594
+**Buttons:** WhatsApp Us · Call 63691 53144
 
 ---
 
@@ -325,7 +325,7 @@ Pack your bags, we'll handle the rest.
 Packages · Rentals · Why Us · Contact
 
 **Column 3 — Contact**
-📞 93429 37594
+📞 63691 53144
 💬 WhatsApp
 📧 `[[TO CONFIRM]] email address`
 📷 @pack_go_vaccation

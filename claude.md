@@ -18,8 +18,8 @@ Single-page marketing website for **Pack & Go Vacation**, a tour operator and ve
 
 1. **Mobile-first.** Design at 360px width first, then scale up. Desktop is secondary.
 2. **Fast on 4G.** Target Lighthouse performance 90+ on mobile. Every image lazy-loaded and compressed.
-3. **WhatsApp is the primary CTA.** Link format: `https://wa.me/919342937594?text=<url-encoded prefilled message>`. Prefill context-specific text per section (e.g. from the Goa card: "Hi, I'm interested in the Goa package").
-4. **Phone number is tappable everywhere.** Use `tel:+919342937594`.
+3. **WhatsApp is the primary CTA.** Link format: `https://wa.me/916369153144?text=<url-encoded prefilled message>`. Prefill context-specific text per section (e.g. from the Goa card: "Hi, I'm interested in the Goa package").
+4. **Phone number is tappable everywhere.** Use `tel:+916369153144`.
 5. **No placeholder content ships.** Anything marked `[[TO CONFIRM]]` in `content/website-content.md` must either be filled by the owner or the element removed. Never invent prices, review text, stats, or policies.
 6. **No stock photography.** Only the client's own trip photos.
 
@@ -97,7 +97,7 @@ Sections in order (all one page, anchor-linked):
 ├── astro.config.mjs
 ├── tailwind.config.mjs
 ├── public/
-│   ├── favicon.svg
+│   ├── favicon.png
 │   └── og-image.jpg
 └── src/
     ├── content/
@@ -130,7 +130,7 @@ Sections in order (all one page, anchor-linked):
 - Short sentences. Plain English. No "unlock your wanderlust," no "embark on a journey," no travel-brochure filler.
 - The tagline **"Pack your bags, we'll handle the rest."** is fixed brand copy — do not reword it.
 - Prices display as `From ₹X,XXX` — always with "From," always with the rupee symbol.
-- Phone displays as `93429 37594` (spaced) but links as `+919342937594`.
+- Phone displays as `63691 53144` (spaced) but links as `+916369153144`.
 
 ---
 

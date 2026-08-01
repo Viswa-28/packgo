@@ -14,7 +14,7 @@ export function wa(message) {
 export const tel = `tel:${phoneLink}`;
 export const phone = phoneDisplay;
 
-/** "Call 93429 37594" — used on the hero and final CTA. */
+/** "Call 63691 53144" — used on the hero and final CTA. */
 export const callLabel = `Call ${phoneDisplay}`;
 
 /** Prices render as "From ₹X,XXX", or not at all when the value is unknown. */

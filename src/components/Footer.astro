@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import site from '../content/site.json';
 import Icon from './Icon.astro';
+import logo from '../assets/logo.png';
 import { wa, tel, phone } from '../lib/contact';
 
 const { brand, contact, footer } = site;
@@ -15,6 +17,14 @@ const legalLinks = footer.legalLinks as { label: string; href: string }[];
   <div class="container-x">
     <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
       <div>
+        <Image
+          src={logo}
+          alt={`${brand.name} logo`}
+          width={72}
+          height={72}
+          densities={[1, 2]}
+          class="mb-4 size-16"
+        />
         <p class="font-display text-2xl tracking-wide text-cream">{brand.name}</p>
         <p class="mt-2 text-[0.9375rem] text-gold">{brand.tagline}</p>
         <address class="mt-4 text-[0.9375rem] not-italic">
