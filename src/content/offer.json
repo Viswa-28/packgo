@@ -1,0 +1,12 @@
+{
+  "_howto": "Swap this out whenever a new trip goes live. Set \"active\": false to hide the banner entirely. \"expiresOn\" (YYYY-MM-DD) auto-hides it after that date at build time — leave empty to never auto-hide.",
+  "active": true,
+  "expiresOn": "2026-07-28",
+  "icon": "bike",
+  "lead": "Next Adventure:",
+  "text": "Madurai → Warkala Bike Trip — departing 28 July 2026. Limited seats, offer pricing on now.",
+  "cta": {
+    "label": "Reserve My Seat",
+    "message": "Hi, I want to reserve a seat on the Madurai to Warkala bike trip departing 28 July."
+  }
+}

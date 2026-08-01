@@ -1,0 +1,160 @@
+---
+import '../styles/global.css';
+import site from '../content/site.json';
+import faqs from '../content/faqs.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { brand, contact, meta } = site;
+const title = Astro.props.title ?? meta.title;
+const description = Astro.props.description ?? meta.description;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og-image.jpg', Astro.site).href;
+
+// TravelAgency schema. Address and hours are only emitted when the owner has
+// actually filled them in — no invented location data.
+const address = {
+  '@type': 'PostalAddress',
+  addressLocality: contact.addressLocality,
+  addressRegion: contact.addressRegion,
+  addressCountry: brand.country,
+  ...(contact.streetAddress ? { streetAddress: contact.streetAddress } : {}),
+  ...(contact.postalCode ? { postalCode: contact.postalCode } : {}),
+};
+
+const travelAgency = {
+  '@context': 'https://schema.org',
+  '@type': 'TravelAgency',
+  name: brand.name,
+  description,
+  url: canonical,
+  telephone: contact.phoneLink,
+  image: ogImage,
+  address,
+  areaServed: [
+    { '@type': 'City', name: 'Madurai' },
+    { '@type': 'State', name: 'Tamil Nadu' },
+    { '@type': 'Country', name: 'India' },
+  ],
+  slogan: brand.tagline,
+  sameAs: [contact.instagramUrl],
+  ...(contact.email ? { email: contact.email } : {}),
+  ...(contact.hoursSchema ? { openingHours: contact.hoursSchema } : {}),
+};
+
+const faqPage = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en-IN" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#1B3A26" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={meta.keywords} />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="IN-TN" />
+    <meta name="geo.placename" content="Madurai" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={brand.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script is:inline set:html={JSON.stringify(travelAgency)} type="application/ld+json" />
+    <script is:inline set:html={JSON.stringify(faqPage)} type="application/ld+json" />
+
+    <script is:inline>
+      // Runs before paint so JS-dependent styles never flash.
+      (function () {
+        var root = document.documentElement;
+        root.classList.remove('no-js');
+
+        // Scroll reveals: prefer the CSS scroll-driven path. Only opt into the
+        // IntersectionObserver fallback when that isn't available.
+        var reduced =
+          window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var nativeTimeline =
+          window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+
+        if (!reduced && !nativeTimeline && 'IntersectionObserver' in window) {
+          root.classList.add('js-reveal');
+          // Watchdog: if the observer never boots (blocked/failed bundle), drop
+          // back to plain visible content rather than leaving the page blank.
+          setTimeout(function () {
+            if (root.dataset.revealReady !== '1') root.classList.remove('js-reveal');
+          }, 2500);
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a
+      href="#main"
+      class="btn-base sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-forest focus:text-cream"
+    >
+      Skip to content
+    </a>
+    <slot />
+
+    <script>
+      // Scroll-reveal fallback for browsers without `animation-timeline: view()`
+      // (Safari, Firefox, older WebViews). Chrome/Edge never run this — the CSS
+      // path handles them and `js-reveal` is absent.
+      const root = document.documentElement;
+
+      if (root.classList.contains('js-reveal')) {
+        try {
+          const targets = document.querySelectorAll('.reveal, .reveal-group > *');
+          const observer = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // reveal once, then stop watching
+              }
+            },
+            { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
+          );
+
+          for (const el of targets) observer.observe(el);
+
+          // Disarm the watchdog only once observation is actually established.
+          // Setting this earlier would strand the content hidden if the lines
+          // above threw.
+          root.dataset.revealReady = '1';
+        } catch {
+          root.classList.remove('js-reveal'); // fail open: show everything
+        }
+      }
+    </script>
+  </body>
+</html>

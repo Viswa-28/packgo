@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts — no external requests, no render-blocking CDN. */
+@import '@fontsource/anton/400.css';
+@import '@fontsource-variable/inter/index.css';
+
+@theme {
+  --color-forest: #1b3a26;
+  --color-forest-mid: #2e5e3e;
+  --color-forest-deep: #12271a;
+  --color-gold: #e8a317;
+  --color-gold-soft: #f5c542;
+  /* Darkened gold for text on cream — #E8A317 on cream is 2.1:1 and fails WCAG AA. */
+  --color-gold-deep: #8a5a08;
+  --color-cream: #f7f4ec;
+  --color-cream-dim: #ece7da;
+  --color-ink: #1a1a1a;
+  --color-muted: #6b6b6b;
+
+  --font-display: 'Anton', 'Arial Narrow', system-ui, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-card: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header height + breathing room, so anchor targets aren't hidden. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+    background-color: var(--color-cream);
+    /* Guards against any child overflowing at 360px. `clip`, not `hidden`:
+       `hidden` would make <body> a scroll container, and the scroll-driven
+       reveal animations below would then resolve against it instead of the
+       viewport and never fire. */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: 0.005em;
+    text-wrap: balance;
+  }
+
+  /* Visible focus ring on every interactive element, on light and dark sections. */
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Every tap target clears 44x44 per the accessibility bar. */
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-align: center;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* 14px is the floor everywhere on this site — including eyebrows and badges.
+   font-family is pinned so the label looks the same whether it sits on a <p>
+   or on a heading, which the base h1-h3 rule would otherwise set in Anton. */
+@utility section-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal — two implementations of the same effect.
+
+   Path A (Chrome/Edge, and the Android Chrome majority of this audience):
+     CSS scroll-driven animations via `animation-timeline: view()`. Zero JS, and
+     it runs on the compositor so it stays smooth while scrolling.
+
+   Path B (Safari, Firefox, older WebViews — no animation-timeline yet):
+     A ~20-line IntersectionObserver in Base.astro adds `.is-visible`, and a
+     plain CSS transition does the work. The <html> element only gets the
+     `js-reveal` class when path A is unavailable, so the two never overlap.
+
+   Both respect prefers-reduced-motion, and both fail OPEN — if anything goes
+   wrong the content is simply visible and unanimated, never stuck hidden.
+--------------------------------------------------------------------------- */
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Path A: native scroll-driven --- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 46%;
+    }
+
+    /* Children cascade diagonally rather than snapping in as one row. */
+    .reveal-group > * {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 2% entry 44%;
+    }
+    .reveal-group > *:nth-child(3n + 2) {
+      animation-range: entry 9% entry 51%;
+    }
+    .reveal-group > *:nth-child(3n + 3) {
+      animation-range: entry 16% entry 58%;
+    }
+
+    /* Hero backdrop drifts a little as the section leaves. Transform only —
+       compositor-driven, no layout or paint. */
+    .drift {
+      animation: drift-up linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+/* --- Path B: IntersectionObserver fallback ---
+   Scoped to .js-reveal, which is only set when path A is unsupported AND
+   IntersectionObserver exists AND motion is allowed. A watchdog in Base.astro
+   strips the class if the observer never boots, so content can't stay hidden. */
+.js-reveal .reveal,
+.js-reveal .reveal-group > * {
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.js-reveal .reveal.is-visible,
+.js-reveal .reveal-group > .is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal .reveal-group > *:nth-child(3n + 2) {
+  transition-delay: 90ms;
+}
+.js-reveal .reveal-group > *:nth-child(3n + 3) {
+  transition-delay: 180ms;
+}
+
+@keyframes drift-up {
+  to {
+    transform: translateY(-40px);
+  }
+}
+
+/* FAQ accordion — button + aria-expanded, driven by a few lines of vanilla JS. */
+.faq-trigger[aria-expanded='true'] .faq-chevron {
+  transform: rotate(180deg);
+}
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.22s ease;
+}
+.faq-panel > div {
+  overflow: hidden;
+}
+.faq-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+/* No JS / JS failed: never leave answers unreachable. */
+.no-js .faq-panel {
+  grid-template-rows: 1fr;
+}

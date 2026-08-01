@@ -1,0 +1,281 @@
+{
+  "brand": {
+    "name": "Pack & Go Vacation",
+    "tagline": "Pack your bags, we'll handle the rest.",
+    "city": "Madurai",
+    "region": "Tamil Nadu",
+    "country": "IN"
+  },
+
+  "contact": {
+    "phoneDisplay": "93429 37594",
+    "phoneLink": "+919342937594",
+    "whatsappNumber": "919342937594",
+    "instagramHandle": "pack_go_vaccation",
+    "instagramUrl": "https://www.instagram.com/pack_go_vaccation/",
+
+    "_note_email": "Fill in to show the email row in the footer. Leave empty to hide it.",
+    "email": "",
+
+    "_note_address": "Full street address. Leave streetAddress empty to hide the address block and drop it from JSON-LD.",
+    "streetAddress": "",
+    "addressLocality": "Madurai",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "",
+
+    "_note_hours": "e.g. \"Mon-Sun, 9am - 9pm\". Leave empty to hide the Hours column.",
+    "hoursDisplay": "",
+    "hoursSchema": ""
+  },
+
+  "meta": {
+    "title": "Pack & Go Vacation | Tour Packages & Vehicle Rentals in Madurai",
+    "description": "Madurai-based tour operator offering all-India holiday packages, bike trips, and car & bike rentals. Beaches, hill stations, heritage. Call 93429 37594.",
+    "keywords": "tour packages Madurai, Madurai travel agency, bike trip packages Tamil Nadu, car rental Madurai, Goa package from Madurai, Kerala tour package Madurai"
+  },
+
+  "nav": [
+    { "label": "Home", "href": "#top" },
+    { "label": "Packages", "href": "#packages" },
+    { "label": "Rentals", "href": "#rentals" },
+    { "label": "Why Us", "href": "#why-us" },
+    { "label": "Reviews", "href": "#reviews" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "navCta": {
+    "label": "WhatsApp Us",
+    "message": "Hi Pack & Go Vacation, I'd like to plan a trip."
+  },
+
+  "hero": {
+    "eyebrow": "All India tour packages · Based in Madurai",
+    "h1Lead": "Pack Your Bags.",
+    "h1Accent": "We'll Handle the Rest.",
+    "subheading": "Curated holiday packages, guided bike trips, and self-drive rentals — planned end to end by a team that actually travels these routes.",
+    "primaryCta": {
+      "label": "Plan My Trip on WhatsApp",
+      "message": "Hi Pack & Go Vacation, I'd like to plan a trip. Here are my dates and destination:"
+    },
+    "_note_trust": "\"[[TO CONFIRM]] years running\" was removed — add { \"icon\": \"award\", \"text\": \"X years running\" } once confirmed.",
+    "trust": [
+      { "icon": "route", "text": "Custom itineraries" },
+      { "icon": "receipt", "text": "Transparent pricing" },
+      { "icon": "headset", "text": "Support throughout your trip" }
+    ],
+    "_note_map": "Illustrated south India map in the hero. Every place below is one real destination from content.md, positioned by its actual latitude and longitude — add one and it appears. \"anchor\" is which side its label sits on (right/left/top/bottom); adjust if two labels collide. \"pin\" gives a place a large category marker instead of a plain dot; \"minor\" hides its label on phones to stop the map getting crowded. \"count\" should stay in step with about.stats.",
+    "map": {
+      "label": "Where we take you",
+      "regionLabel": "South India",
+      "altText": "Illustrated map of south India marking Goa, Ooty, Kodaikanal, Munnar, Thekkady, Alleppey, Varkala, Kanyakumari and Rameswaram, with Madurai marked as the base.",
+      "_note_regions": "State names printed on the map. Position is a readable spot inside each state, not a computed centroid — nudge the lat/lon if a name lands awkwardly. Only states with real destinations are named.",
+      "regions": [
+        { "name": "Karnataka", "lat": 14.4, "lon": 76.1 },
+        { "name": "Kerala", "lat": 12.2, "lon": 75.6 },
+        { "name": "Tamil Nadu", "lat": 11.3, "lon": 78.5 }
+      ],
+      "places": [
+        {
+          "name": "Goa",
+          "lat": 15.5,
+          "lon": 73.83,
+          "anchor": "right",
+          "pin": "palm",
+          "kind": "Beaches",
+          "message": "Hi, I'm interested in the Goa package."
+        },
+        {
+          "name": "Ooty",
+          "lat": 11.41,
+          "lon": 76.69,
+          "anchor": "left",
+          "pin": "mountain",
+          "kind": "Hill stations",
+          "message": "Hi, I'm interested in a hill station trip."
+        },
+        {
+          "name": "Rameswaram",
+          "lat": 9.29,
+          "lon": 79.31,
+          "anchor": "bottom",
+          "pin": "temple",
+          "kind": "Heritage",
+          "message": "Hi, I'm interested in the Tamil Nadu Temple Circuit package."
+        },
+        {
+          "name": "Varkala",
+          "lat": 8.73,
+          "lon": 76.72,
+          "anchor": "bottom",
+          "pin": "bike",
+          "kind": "Bike trips",
+          "message": "Hi, I want to reserve a seat on the Madurai to Warkala bike trip."
+        },
+        { "name": "Madurai", "lat": 9.93, "lon": 78.12, "anchor": "right", "home": true },
+        { "name": "Kodaikanal", "lat": 10.24, "lon": 77.49, "anchor": "top", "minor": true },
+        { "name": "Munnar", "lat": 10.09, "lon": 77.06, "anchor": "left", "minor": true },
+        { "name": "Thekkady", "lat": 9.6, "lon": 77.16, "anchor": "bottom", "minor": true },
+        { "name": "Alleppey", "lat": 9.5, "lon": 76.34, "anchor": "left", "minor": true },
+        { "name": "Kanyakumari", "lat": 8.08, "lon": 77.55, "anchor": "right", "minor": true }
+      ]
+    }
+  },
+
+  "about": {
+    "label": "About Us",
+    "heading": "A Madurai travel crew, not a call centre.",
+    "body": [
+      "Pack & Go Vacation started with a simple idea — that planning a holiday shouldn't be more stressful than the work you're escaping from. We handle the hotels, the vehicle, the route, the stops worth making, and the ones worth skipping.",
+      "Whether it's a family temple circuit through Tamil Nadu, a group ride down to the Kerala coast, or a long weekend in Goa, you tell us the dates and the budget. We build the rest around it.",
+      "We're based in Madurai and we travel these roads ourselves. That's the difference — every itinerary we sell is one we'd take."
+    ],
+    "_note_stats": "\"Trips completed\" and \"Happy travellers\" were removed — both were [[TO CONFIRM]]. Add them back here once you have real numbers you can back up.",
+    "stats": [
+      { "value": "15+", "label": "Destinations across India" },
+      { "value": "24/7", "label": "On-trip support" }
+    ]
+  },
+
+  "packagesSection": {
+    "label": "Our Packages",
+    "heading": "Pick a trip. Or tell us to build one.",
+    "_note_intro": "The original line ended with \"Prices shown are per person on [[TO CONFIRM]] basis.\" — that clause is removed until the basis (twin sharing / min group size) is confirmed.",
+    "intro": "Every package below can be customised — extend the nights, upgrade the stay, change the pickup point."
+  },
+
+  "rentals": {
+    "label": "Rentals",
+    "heading": "Cars & Bikes on Rent",
+    "body": "Need just the vehicle? We rent cars and bikes at honest daily rates — no hidden charges, no last-minute surprises. Pickup from Madurai.",
+    "features": [
+      {
+        "icon": "car",
+        "heading": "All Vehicle Types",
+        "text": "Hatchbacks, sedans, SUVs, and Tempo Travellers for larger groups."
+      },
+      {
+        "icon": "bike",
+        "heading": "Bikes for Every Ride",
+        "text": "Commuters for city runs, tourers and adventure bikes for long-distance trips."
+      },
+      {
+        "icon": "rupee",
+        "heading": "Affordable Daily Rates",
+        "text": "Clear pricing per day. Fuel, deposit, and KM limits explained before you book."
+      }
+    ],
+    "requirementsHeading": "What you need to bring",
+    "_note_deposit": "Deposit amount was [[TO CONFIRM]] — the amount is omitted, the requirement is not. Add it to the last item when confirmed.",
+    "requirements": [
+      "Valid driving licence",
+      "Original ID proof",
+      "Refundable security deposit"
+    ],
+    "cta": {
+      "label": "Check Availability",
+      "message": "Hi, I'd like to rent a vehicle. Please share availability and daily rates."
+    }
+  },
+
+  "whyUs": {
+    "label": "Why Pack & Go",
+    "heading": "Six reasons people book with us twice.",
+    "items": [
+      {
+        "icon": "map",
+        "heading": "We know these roads",
+        "text": "Our itineraries come from trips we've actually taken, not from a brochure."
+      },
+      {
+        "icon": "sliders",
+        "heading": "Fully customisable",
+        "text": "Change the hotel, the dates, the route. The package bends to you."
+      },
+      {
+        "icon": "receipt",
+        "heading": "Transparent pricing",
+        "text": "You see what's included and what isn't, before you pay a rupee."
+      },
+      {
+        "icon": "chat",
+        "heading": "Local Tamil-speaking team",
+        "text": "Talk to us in Tamil or English. No scripts, no runaround."
+      },
+      {
+        "icon": "car",
+        "heading": "Tours and rentals",
+        "text": "One team for the full trip or just the vehicle — your choice."
+      },
+      {
+        "icon": "headset",
+        "heading": "Reachable during the trip",
+        "text": "Something goes wrong at 11pm in Munnar? You still get a person on the phone."
+      }
+    ]
+  },
+
+  "howItWorks": {
+    "label": "How It Works",
+    "heading": "Booking takes three steps.",
+    "steps": [
+      {
+        "icon": "chat",
+        "heading": "Tell us your plan",
+        "text": "Message us on WhatsApp with your destination, dates, and how many people are travelling."
+      },
+      {
+        "icon": "route",
+        "heading": "Get your itinerary",
+        "text": "We send back a day-wise plan and a full quote. Change anything you like until it's right."
+      },
+      {
+        "icon": "check",
+        "heading": "Confirm and go",
+        "text": "Pay the advance, get your confirmation, and turn up with your bags. We handle everything else."
+      }
+    ]
+  },
+
+  "testimonialsSection": {
+    "label": "Reviews",
+    "heading": "What travellers say",
+    "_note": "testimonials.json is empty on purpose — no invented reviews. While it stays empty this section renders the Instagram trust block below instead. Add one real entry and the review cards take over automatically.",
+    "fallbackHeading": "See the trips as they happen",
+    "fallbackBody": "We post every trip we run — the routes, the stays, the groups. Have a look before you decide.",
+    "fallbackCta": "Follow on Instagram"
+  },
+
+  "gallerySection": {
+    "label": "Gallery",
+    "heading": "Where we've been",
+    "_note": "gallery.json is empty — drop your own trip photos into src/assets/gallery/ and list them there. The section stays hidden until then. No stock photography."
+  },
+
+  "faqSection": {
+    "label": "FAQ",
+    "heading": "Questions people ask"
+  },
+
+  "finalCta": {
+    "heading": "India is calling. Answer it.",
+    "body": "Tell us where you want to go. We'll take it from there.",
+    "whatsapp": {
+      "label": "WhatsApp Us",
+      "message": "Hi Pack & Go Vacation, I'd like to know more about your trips."
+    }
+  },
+
+  "footer": {
+    "quickLinksHeading": "Quick Links",
+    "quickLinks": [
+      { "label": "Packages", "href": "#packages" },
+      { "label": "Rentals", "href": "#rentals" },
+      { "label": "Why Us", "href": "#why-us" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "contactHeading": "Contact",
+    "hoursHeading": "Hours",
+    "_note_legal": "Terms / Privacy links were dropped — those pages don't exist. Add { \"label\": \"Terms\", \"href\": \"/terms\" } here once they do.",
+    "legalLinks": [],
+    "copyright": "© 2026 Pack & Go Vacation. All rights reserved."
+  }
+}

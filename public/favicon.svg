@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pack and Go Vacation">
+  <rect width="64" height="64" rx="14" fill="#1B3A26"/>
+  <g fill="none" stroke="#E8A317" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M34.7 21.3c0-7.4-6.6-13.3-14.7-13.3S5.3 13.9 5.3 21.3h5.4l2.6-2.7 2.7 2.7h10.7"/>
+    <path d="M34.7 19c2.6-1.7 5.9-3 9.3-3 8.1 0 14.7 6 14.7 13.3h-8l-2.7-2.7-2.7 2.7h-8"/>
+    <path d="M15.7 25.9c-5.7 5.7-6.1 13.5-.9 18.1 4.6 4.6 12.8 3.9 18.1-.9"/>
+    <path d="M32 58.7V21.3"/>
+  </g>
+</svg>

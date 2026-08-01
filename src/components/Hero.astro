@@ -1,0 +1,74 @@
+---
+import site from '../content/site.json';
+import Icon from './Icon.astro';
+import HeroMap from './HeroMap.astro';
+import { wa, tel, callLabel } from '../lib/contact';
+
+const { hero } = site;
+---
+
+<section id="top" class="relative overflow-hidden bg-forest text-cream">
+  {/* Topography-style backdrop. Pure CSS — no image weight, no stock photo. */}
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 opacity-[0.13]"
+    style="background-image:radial-gradient(circle at 1px 1px,#F5C542 1px,transparent 0);background-size:26px 26px;"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="drift pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-forest-mid/50 blur-2xl md:size-96"
+  >
+  </div>
+
+  {/* Padding is kept tight on purpose. The map column is much taller than the
+      text column, so generous hero padding on top of centred columns left a
+      dead band under the nav. */}
+  <div
+    class="container-x relative grid gap-8 py-10 md:py-12 lg:grid-cols-[1.05fr_0.9fr] lg:items-center lg:gap-12 lg:py-14"
+  >
+    <div>
+      <p class="section-label text-gold">{hero.eyebrow}</p>
+
+      <h1 class="mt-4 text-[2.6rem] leading-[1.03] sm:text-6xl lg:text-[3.5rem] xl:text-[4rem]">
+        {hero.h1Lead}<br /><span class="text-gold">{hero.h1Accent}</span>
+      </h1>
+
+      <p class="mt-5 max-w-xl text-[1.0625rem] text-cream/85 md:text-lg">
+        {hero.subheading}
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a
+          href={wa(hero.primaryCta.message)}
+          target="_blank"
+          rel="noopener"
+          class="btn-base bg-gold text-forest-deep shadow-lg shadow-black/20 hover:bg-gold-soft"
+        >
+          <Icon name="whatsapp" size={20} />
+          {hero.primaryCta.label}
+        </a>
+        <a
+          href={tel}
+          class="btn-base border-2 border-cream/35 text-cream hover:border-gold hover:text-gold"
+        >
+          <Icon name="phone" size={18} />
+          {callLabel}
+        </a>
+      </div>
+
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2.5">
+        {
+          hero.trust.map((item) => (
+            <li class="flex items-center gap-2 text-[0.9375rem] text-cream/80">
+              <Icon name={item.icon} size={17} class="shrink-0 text-gold" />
+              {item.text}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <HeroMap />
+  </div>
+</section>

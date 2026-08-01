@@ -1,0 +1,273 @@
+---
+import site from '../content/site.json';
+import Icon from './Icon.astro';
+import { FRAME, project } from '../lib/map-projection';
+import outline from '../lib/south-india.json';
+
+const { map } = site.hero;
+
+/* An illustrated map, not a data map. Everything is inline SVG plus a handful
+   of absolutely-positioned HTML labels — no JavaScript, no tiles, no map
+   library, nothing fetched at runtime.
+
+   The coastline is real: traced from Natural Earth 50m by
+   scripts/make-south-india.mjs and projected with lib/map-projection.js. Every
+   place sits at its true latitude and longitude, so the map can't quietly drift
+   away from the places we actually sell. */
+
+const places = map.places.map((p) => ({ ...p, ...project(p.lat, p.lon) }));
+const pins = places.filter((p) => p.pin);
+const regions = map.regions.map((r) => ({ ...r, ...project(r.lat, r.lon) }));
+
+// Labels are HTML so they hold a real 14px whatever the map scales to.
+const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(2)}%`;
+---
+
+{/* Capped on desktop: at full column width the square map made the hero row far
+    taller than the text beside it. */}
+<div class="hm relative mx-auto w-full max-w-[34rem] lg:mr-0 lg:ml-auto lg:max-w-[29rem]" data-hero-map>
+  {/* One label only. The count used to sit here too, and again on a floating
+      chip, and again in the About stats — three times on one screen. */}
+  <h2 class="section-label text-gold">{map.label}</h2>
+
+  <div class="hm-card relative mt-3 overflow-hidden rounded-card bg-cream p-3 shadow-2xl shadow-black/30 sm:p-4">
+    <div class="relative" style={`aspect-ratio:${FRAME.width}/${FRAME.height}`}>
+      <svg
+        viewBox={`0 0 ${FRAME.width} ${FRAME.height}`}
+        class="absolute inset-0 size-full"
+        role="img"
+        aria-label={map.altText}
+      >
+        {/* Contour halo: the same coastline stroked progressively wider and
+            fainter underneath, which reads as depth without any filter. */}
+        <path d={outline.coast} class="hm-halo hm-halo-3" />
+        <path d={outline.coast} class="hm-halo hm-halo-2" />
+        <path d={outline.coast} class="hm-halo hm-halo-1" />
+
+        <path d={outline.coast} class="hm-land" />
+
+        {/* States, clipped to the coastline. The state data is finer than the
+            coast outline, so clipping is what keeps the two in register. */}
+        <defs>
+          <clipPath id="hm-landmask">
+            <path d={outline.coast} />
+          </clipPath>
+        </defs>
+        <g clip-path="url(#hm-landmask)">
+          {
+            outline.states.map((s, i) => (
+              <path d={s.path} class={`hm-state hm-state-${i % 4}`} />
+            ))
+          }
+        </g>
+
+        <path d={outline.coast} class="hm-coast" />
+
+        {
+          regions.map((r) => (
+            <text x={r.x} y={r.y} class="hm-region-name" text-anchor="middle">
+              {r.name}
+            </text>
+          ))
+        }
+
+        {places.map((p) => <circle cx={p.x} cy={p.y} r="4" class="hm-dot" />)}
+
+        {
+          pins.map((p) => (
+            <g class="hm-pin" transform={`translate(${p.x} ${p.y - 34})`}>
+              <path d="M0 34 L-7 20 A 19 19 0 1 1 7 20 Z" class="hm-pin-body" />
+              <g transform="translate(-10 -12)" class="hm-pin-icon">
+                <Icon name={p.pin} size={20} />
+              </g>
+            </g>
+          ))
+        }
+
+        <g class="hm-home" transform={`translate(${places.find((p) => p.home)!.x} ${places.find((p) => p.home)!.y})`}>
+          <circle r="13" class="hm-home-ring" />
+          <circle r="6" class="hm-home-dot" />
+        </g>
+      </svg>
+
+      {
+        places.map((p) => (
+          <span
+            class:list={[
+              'hm-label',
+              `hm-${p.anchor}`,
+              p.minor && 'hm-minor',
+              p.home && 'hm-label-home',
+            ]}
+            style={`left:${pct(p.x, FRAME.width)};top:${pct(p.y, FRAME.height)}`}
+          >
+            {p.name}
+          </span>
+        ))
+      }
+
+      <p class="hm-region">{map.regionLabel}</p>
+    </div>
+
+    {/* Legend, so the pin icons are readable rather than decorative. */}
+    <ul class="mt-3 flex flex-wrap gap-x-4 gap-y-2 px-1">
+      {
+        pins.map((p) => (
+          <li class="flex items-center gap-1.5 text-sm text-ink/70">
+            <span class="grid size-5 shrink-0 place-items-center rounded-full bg-forest text-cream">
+              <Icon name={p.pin} size={11} />
+            </span>
+            {p.kind}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  .hm-card {
+    /* Sea. Kept very pale so the land reads as the subject. */
+    background: linear-gradient(160deg, #eef3f2 0%, #e6eeee 55%, #dfe9ea 100%);
+  }
+
+  .hm-land {
+    fill: #fbfaf5;
+  }
+
+  /* Thin dividers plus a barely-there tint, so the states read as separate
+     without turning the map into a political chart. */
+  .hm-state {
+    stroke: #1b3a26;
+    stroke-width: 0.9;
+    stroke-opacity: 0.42;
+    stroke-linejoin: round;
+  }
+  .hm-state-0 {
+    fill: #f6f5ee;
+  }
+  .hm-state-1 {
+    fill: #eef2e9;
+  }
+  .hm-state-2 {
+    fill: #f3f1e6;
+  }
+  .hm-state-3 {
+    fill: #eaefe6;
+  }
+
+  .hm-coast {
+    fill: none;
+    stroke: #1b3a26;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+
+  .hm-halo {
+    fill: none;
+    stroke: #1b3a26;
+    stroke-linejoin: round;
+  }
+  .hm-halo-1 {
+    stroke-width: 12;
+    opacity: 0.07;
+  }
+  .hm-halo-2 {
+    stroke-width: 26;
+    opacity: 0.05;
+  }
+  .hm-halo-3 {
+    stroke-width: 44;
+    opacity: 0.035;
+  }
+
+  .hm-dot {
+    fill: #1a1a1a;
+  }
+
+  /* State names are SVG text on purpose: they're background labelling, so they
+     may scale down with the map. The place names are HTML and never do. */
+  .hm-region-name {
+    fill: #1b3a26;
+    fill-opacity: 0.4;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hm-pin-body {
+    fill: #1b3a26;
+  }
+  .hm-pin-icon {
+    color: #f7f4ec;
+  }
+
+  .hm-home-ring {
+    fill: none;
+    stroke: #e8a317;
+    stroke-width: 3.5;
+  }
+  .hm-home-dot {
+    fill: #e8a317;
+  }
+
+  .hm-label {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    pointer-events: none;
+    /* Keeps names legible where they cross the coastline. */
+    text-shadow:
+      0 0 3px #fbfaf5,
+      0 0 3px #fbfaf5,
+      0 0 6px #fbfaf5;
+  }
+  .hm-label-home {
+    color: #1b3a26;
+    font-weight: 700;
+  }
+  /* Clears the home ring, which is wider than a plain dot. */
+  .hm-label-home.hm-right {
+    transform: translate(22px, -50%);
+  }
+
+  .hm-right {
+    transform: translate(10px, -50%);
+  }
+  .hm-left {
+    transform: translate(calc(-100% - 10px), -50%);
+  }
+  .hm-top {
+    transform: translate(-50%, calc(-100% - 8px));
+  }
+  .hm-bottom {
+    transform: translate(-50%, 10px);
+  }
+
+  /* Ten labels is a crowd on a 320px map. Below 640px only the pinned places
+     and the home base keep theirs; the rest stay as dots. */
+  .hm-minor {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .hm-minor {
+      display: block;
+    }
+  }
+
+  .hm-region {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(26 26 26 / 0.28);
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,105 @@
+[
+  {
+    "id": "goa",
+    "badge": "Most Booked",
+    "title": "Explore Goa",
+    "subtitle": "Sun, Sand & Memories",
+    "duration": "3 Days / 2 Nights",
+    "priceFrom": null,
+    "priceUnit": "per person",
+    "includes": [
+      "2 nights hotel stay",
+      "Daily breakfast",
+      "Airport / railway station pickup & drop",
+      "North Goa & South Goa sightseeing",
+      "Beach visits",
+      "Travel assistance throughout"
+    ],
+    "cta": "Enquire on WhatsApp",
+    "message": "Hi, I'm interested in the Goa package."
+  },
+  {
+    "id": "warkala-bike-trip",
+    "badge": "Departing 28 July",
+    "title": "Madurai → Warkala Bike Trip",
+    "subtitle": "Coastal roads, hill views, zero planning stress",
+    "duration": null,
+    "priceFrom": null,
+    "priceUnit": "per rider",
+    "_note": "Removed bullet: \"[[TO CONFIRM]] — fuel included? backup vehicle? pillion pricing?\". Add those as bullets once decided.",
+    "includes": [
+      "Scenic route planning with hill-view stops",
+      "Bike-friendly stays",
+      "Ride captain & support",
+      "Cliff beaches at Warkala"
+    ],
+    "cta": "Reserve My Seat",
+    "message": "Hi, I want to reserve a seat on the Madurai to Warkala bike trip."
+  },
+  {
+    "id": "kerala",
+    "badge": null,
+    "title": "Kerala Backwaters & Hills",
+    "subtitle": "Munnar, Alleppey, Thekkady",
+    "duration": null,
+    "priceFrom": null,
+    "priceUnit": "per person",
+    "_note": "Removed bullet: \"Houseboat experience [[TO CONFIRM]]\" — add it back once you confirm it's included.",
+    "includes": [
+      "Hotel stays with breakfast",
+      "Tea estate & spice plantation visits",
+      "Private vehicle with driver",
+      "All transfers"
+    ],
+    "cta": "Enquire on WhatsApp",
+    "message": "Hi, I'm interested in the Kerala Backwaters & Hills package."
+  },
+  {
+    "id": "temple-circuit",
+    "badge": null,
+    "title": "Tamil Nadu Temple Circuit",
+    "subtitle": "Madurai · Rameswaram · Kanyakumari",
+    "duration": null,
+    "priceFrom": null,
+    "priceUnit": "per person",
+    "includes": [
+      "Meenakshi Amman Temple, Ramanathaswamy Temple, Kanyakumari sunrise point",
+      "Comfortable stays near temple areas",
+      "AC vehicle throughout",
+      "Flexible darshan timings",
+      "Ideal for families and senior travellers"
+    ],
+    "cta": "Enquire on WhatsApp",
+    "message": "Hi, I'm interested in the Tamil Nadu Temple Circuit package."
+  },
+  {
+    "id": "hill-stations",
+    "badge": null,
+    "title": "Hill Station Getaway",
+    "subtitle": "Kodaikanal & Ooty",
+    "duration": null,
+    "priceFrom": null,
+    "priceUnit": "per person",
+    "_note": "Removed bullet: \"Bonfire evening [[TO CONFIRM]]\" — add it back once you confirm it's included.",
+    "includes": [
+      "Hotel stay with breakfast",
+      "Lake, viewpoint & waterfall sightseeing",
+      "Round-trip transport from Madurai"
+    ],
+    "cta": "Enquire on WhatsApp",
+    "message": "Hi, I'm interested in the Kodaikanal / Ooty hill station package."
+  },
+  {
+    "id": "custom",
+    "featured": true,
+    "badge": null,
+    "title": "Something Else Entirely",
+    "subtitle": "North India, Northeast, Andaman — tell us where.",
+    "body": "We arrange packages across India. Send us your dates, group size, and budget, and we'll come back with a full itinerary and quote — usually within a few hours.",
+    "duration": null,
+    "priceFrom": null,
+    "includes": [],
+    "cta": "Build My Custom Trip",
+    "message": "Hi, I'd like a custom trip. Here are my dates, group size and budget:"
+  }
+]

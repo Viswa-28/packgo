@@ -1,0 +1,124 @@
+---
+import Icon from './Icon.astro';
+import { wa, formatPrice } from '../lib/contact';
+
+interface Props {
+  pkg: {
+    id: string;
+    badge?: string | null;
+    title: string;
+    subtitle?: string;
+    body?: string;
+    duration?: string | null;
+    priceFrom?: number | null;
+    priceUnit?: string;
+    includes?: string[];
+    cta: string;
+    message: string;
+    featured?: boolean;
+  };
+}
+
+const { pkg } = Astro.props;
+const price = formatPrice(pkg.priceFrom);
+const featured = pkg.featured === true;
+---
+
+<article
+  class:list={[
+    'flex flex-col rounded-card border p-6 transition-shadow duration-200 hover:shadow-lg',
+    featured
+      ? 'border-gold/40 bg-forest text-cream'
+      : 'border-forest/10 bg-white shadow-sm',
+  ]}
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="min-w-0">
+      {
+        pkg.badge && (
+          <p
+            class:list={[
+              'section-label mb-2 rounded-full px-3 py-1 tracking-[0.1em]',
+              featured ? 'bg-gold text-forest-deep' : 'bg-forest text-gold',
+            ]}
+          >
+            {pkg.badge}
+          </p>
+        )
+      }
+      <h3 class:list={['text-2xl', featured ? 'text-cream' : 'text-forest']}>
+        {pkg.title}
+      </h3>
+      {
+        pkg.subtitle && (
+          <p class:list={['mt-1 text-[0.9375rem]', featured ? 'text-cream/80' : 'text-muted']}>
+            {pkg.subtitle}
+          </p>
+        )
+      }
+    </div>
+  </div>
+
+  {
+    (pkg.duration || price) && (
+      <div class="mt-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        {pkg.duration && (
+          <p
+            class:list={[
+              'flex items-center gap-1.5 text-[0.9375rem] font-medium',
+              featured ? 'text-cream/85' : 'text-ink/75',
+            ]}
+          >
+            <Icon name="calendar" size={16} class={featured ? 'text-gold' : 'text-forest-mid'} />
+            {pkg.duration}
+          </p>
+        )}
+        {price && (
+          <p class:list={['font-display text-2xl', featured ? 'text-gold' : 'text-forest']}>
+            {price}
+            {pkg.priceUnit && (
+              <span class="ml-1 font-sans text-sm font-medium text-muted">{pkg.priceUnit}</span>
+            )}
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  {pkg.body && <p class="mt-4 text-[0.9375rem] text-cream/80">{pkg.body}</p>}
+
+  {
+    pkg.includes && pkg.includes.length > 0 && (
+      <ul class="mt-5 space-y-2.5 text-[0.9375rem]">
+        {pkg.includes.map((line) => (
+          <li class="flex items-start gap-2.5">
+            <Icon
+              name="check"
+              size={17}
+              strokeWidth={2.5}
+              class={`mt-0.5 shrink-0 ${featured ? 'text-gold' : 'text-forest-mid'}`}
+            />
+            <span class={featured ? 'text-cream/85' : 'text-ink/80'}>{line}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="mt-auto pt-6">
+    <a
+      href={wa(pkg.message)}
+      target="_blank"
+      rel="noopener"
+      class:list={[
+        'btn-base w-full',
+        featured
+          ? 'bg-gold text-forest-deep hover:bg-gold-soft'
+          : 'border-2 border-forest text-forest hover:bg-forest hover:text-cream',
+      ]}
+    >
+      <Icon name="whatsapp" size={18} />
+      {pkg.cta}
+    </a>
+  </div>
+</article>

@@ -1,0 +1,66 @@
+---
+import site from '../content/site.json';
+import faqs from '../content/faqs.json';
+import Icon from './Icon.astro';
+
+const { faqSection } = site;
+---
+
+<section id="faq" class="bg-cream-dim py-14 md:py-20">
+  <div class="container-x max-w-3xl">
+    <div class="reveal">
+      <p class="section-label text-gold-deep">{faqSection.label}</p>
+      <h2 class="mt-3 text-[2rem] text-forest sm:text-4xl">{faqSection.heading}</h2>
+    </div>
+
+    <div class="mt-9 space-y-3">
+      {
+        faqs.map((faq, i) => (
+          <div class="reveal overflow-hidden rounded-card border border-forest/10 bg-white">
+            <h3>
+              <button
+                type="button"
+                class="faq-trigger flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-[1.0625rem] font-semibold text-forest transition-colors hover:bg-cream"
+                aria-expanded="false"
+                aria-controls={`faq-panel-${i}`}
+                id={`faq-trigger-${i}`}
+              >
+                {faq.q}
+                <Icon
+                  name="chevron"
+                  size={20}
+                  class="faq-chevron shrink-0 text-gold-deep transition-transform duration-200"
+                />
+              </button>
+            </h3>
+            <div
+              class="faq-panel"
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-trigger-${i}`}
+              data-open="false"
+            >
+              <div>
+                <p class="px-5 pb-5 text-[1.0625rem] text-ink/80">{faq.a}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ accordion — one of the three scripts this site ships.
+  document.querySelectorAll<HTMLButtonElement>('.faq-trigger').forEach((trigger) => {
+    const panel = document.getElementById(trigger.getAttribute('aria-controls') ?? '');
+    if (!panel) return;
+
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!open));
+      panel.dataset.open = String(!open);
+    });
+  });
+</script>

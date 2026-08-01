@@ -1,0 +1,19 @@
+[
+  {
+    "_why": "This file is NOT rendered. These four FAQs were in content.md but their answers were [[TO CONFIRM]]. Write the real answer, then move the object into faqs.json.",
+    "q": "How much advance do I have to pay?",
+    "a": ""
+  },
+  {
+    "q": "What's your cancellation policy?",
+    "a": ""
+  },
+  {
+    "q": "Are flights included in the packages?",
+    "a": ""
+  },
+  {
+    "q": "Do you provide a driver with rental cars?",
+    "a": ""
+  }
+]

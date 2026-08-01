@@ -1,0 +1,73 @@
+---
+import offer from '../content/offer.json';
+import Icon from './Icon.astro';
+import { wa } from '../lib/contact';
+
+// Hidden if switched off, or if the expiry date has passed at build time.
+const expired = offer.expiresOn ? new Date(offer.expiresOn) < new Date() : false;
+const show = offer.active && !expired;
+
+// Changing the offer copy changes the key, so a dismissed banner doesn't keep
+// a *new* offer hidden.
+const offerKey = `pg-offer:${offer.expiresOn || 'none'}:${offer.text.slice(0, 40)}`;
+---
+
+{
+  show && (
+    <aside id="offer-banner" class="bg-gold text-forest-deep" aria-label="Current offer">
+      <div class="container-x flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:gap-4">
+        <p class="flex min-w-0 flex-1 items-start gap-2.5 text-[0.9375rem] leading-snug">
+          <Icon name={offer.icon} size={20} class="mt-0.5 shrink-0" />
+          <span>
+            {/* Explicit space — JSX collapses the whitespace between the tag
+                and the expression, which glued "Adventure:" to the first word
+                and produced an unbreakable token that overflowed at 360px. */}
+            <strong class="font-bold">{offer.lead}</strong>{' '}{offer.text}
+          </span>
+        </p>
+
+        <div class="flex shrink-0 items-center justify-end gap-2">
+          <a
+            href={wa(offer.cta.message)}
+            target="_blank"
+            rel="noopener"
+            class="btn-base min-h-11 bg-forest px-4 text-[0.9375rem] text-cream hover:bg-forest-mid"
+          >
+            {offer.cta.label}
+          </a>
+          <button
+            type="button"
+            id="offer-dismiss"
+            class="grid size-11 shrink-0 place-items-center rounded-full transition-colors hover:bg-forest/15"
+            aria-label="Dismiss this offer"
+          >
+            <Icon name="close" size={20} />
+          </button>
+        </div>
+      </div>
+    </aside>
+  )
+}
+
+<script define:vars={{ offerKey }}>
+  // Offer banner dismiss — one of the three scripts this site ships.
+  const banner = document.getElementById('offer-banner');
+  const dismiss = document.getElementById('offer-dismiss');
+
+  if (banner && dismiss) {
+    try {
+      if (localStorage.getItem(offerKey) === '1') banner.hidden = true;
+    } catch {
+      /* storage blocked — banner just stays visible */
+    }
+
+    dismiss.addEventListener('click', () => {
+      banner.hidden = true;
+      try {
+        localStorage.setItem(offerKey, '1');
+      } catch {
+        /* no-op */
+      }
+    });
+  }
+</script>

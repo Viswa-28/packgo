@@ -1,0 +1,136 @@
+---
+import site from '../content/site.json';
+import Icon from './Icon.astro';
+import { wa, tel, phone } from '../lib/contact';
+
+const { nav, navCta, brand } = site;
+---
+
+{/* Opaque, not translucent: gold-on-translucent-forest measures 4.29:1 over the
+     cream body and fails AA. Solid forest puts it at 5.8:1. */}
+<header class="sticky top-0 z-50 border-b border-forest-mid/40 bg-forest">
+  <div class="container-x flex h-16 items-center justify-between gap-3 md:h-20">
+    <a
+      href="#top"
+      class="flex items-center gap-2.5 py-2 text-cream"
+      aria-label={`${brand.name} — back to top`}
+    >
+      <span
+        class="grid size-9 shrink-0 place-items-center rounded-xl bg-gold text-forest"
+        aria-hidden="true"
+      >
+        <Icon name="palm" size={20} strokeWidth={2.25} />
+      </span>
+      <span class="leading-none">
+        <span class="block font-display text-xl tracking-wide md:text-2xl">Pack &amp; Go</span>
+        <span class="mt-0.5 block text-sm font-semibold tracking-[0.18em] text-gold uppercase"
+          >Vacation</span
+        >
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="inline-flex min-h-11 items-center rounded-full px-3.5 text-[15px] font-medium text-cream/90 transition-colors hover:bg-forest-mid hover:text-cream"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={tel}
+        class="hidden min-h-11 items-center gap-2 rounded-full border border-cream/30 px-4 text-[15px] font-semibold text-cream transition-colors hover:border-gold hover:text-gold sm:inline-flex"
+        aria-label={`Call Pack and Go Vacation on ${phone}`}
+      >
+        <Icon name="phone" size={17} />
+        <span class="hidden md:inline">{phone}</span>
+      </a>
+
+      <a
+        href={wa(navCta.message)}
+        target="_blank"
+        rel="noopener"
+        class="btn-base bg-gold px-4 text-[15px] text-forest-deep hover:bg-gold-soft"
+      >
+        <Icon name="whatsapp" size={18} />
+        <span class="hidden sm:inline">{navCta.label}</span>
+        <span class="sm:hidden">WhatsApp</span>
+      </a>
+
+      <button
+        type="button"
+        id="nav-toggle"
+        class="grid size-11 place-items-center rounded-full text-cream transition-colors hover:bg-forest-mid lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <Icon name="menu" size={24} class="nav-icon-open" />
+        <Icon name="close" size={24} class="nav-icon-close hidden" />
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" aria-label="Mobile" class="hidden border-t border-forest-mid/40 lg:hidden">
+    <ul class="container-x py-2">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="flex min-h-12 items-center justify-between border-b border-forest-mid/25 text-cream/90 last:border-0"
+            >
+              {item.label}
+              <Icon name="arrow" size={16} class="text-gold" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // Mobile nav toggle — one of the three scripts this site ships.
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('mobile-nav');
+
+  if (toggle && panel) {
+    const openIcon = toggle.querySelector('.nav-icon-open');
+    const closeIcon = toggle.querySelector('.nav-icon-close');
+
+    const setOpen = (open: boolean) => {
+      panel.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      openIcon?.classList.toggle('hidden', open);
+      closeIcon?.classList.toggle('hidden', !open);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Close after picking a destination.
+    panel.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
