@@ -38,12 +38,12 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
     Holiday packages · Bike trips · Car &amp; bike rentals
   </text>
 
-  <rect x="80" y="508" width="360" height="66" rx="33" fill="#E8A317"/>
-  <text x="260" y="551" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
-        font-size="30" font-weight="700" fill="#12271A">63691 53144</text>
+  <rect x="80" y="508" width="392" height="66" rx="33" fill="#E8A317"/>
+  <text x="276" y="551" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="30" font-weight="700" fill="#12271A">WhatsApp 93429 37594</text>
 
-  <text x="472" y="551" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#F7F4EC" opacity="0.7">
-    WhatsApp or call
+  <text x="504" y="551" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#F7F4EC" opacity="0.7">
+    Call 63691 53144
   </text>
 </svg>`;
 

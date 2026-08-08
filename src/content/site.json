@@ -10,7 +10,13 @@
   "contact": {
     "phoneDisplay": "63691 53144",
     "phoneLink": "+916369153144",
-    "whatsappNumber": "916369153144",
+
+    "_note_altPhone": "Second contact number. Shown alongside the first in the header and footer. Leave altPhoneDisplay empty to hide it everywhere.",
+    "altPhoneDisplay": "93429 37594",
+    "altPhoneLink": "+919342937594",
+
+    "_note_whatsapp": "Which number every WhatsApp CTA opens. Digits only, country code first.",
+    "whatsappNumber": "919342937594",
     "instagramHandle": "pack_go_vaccation",
     "instagramUrl": "https://www.instagram.com/pack_go_vaccation/",
 

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import site from '../content/site.json';
 import Icon from './Icon.astro';
 import logo from '../assets/logo.png';
-import { wa, tel, phone } from '../lib/contact';
+import { wa, tel, phone, altTel, altPhone, whatsappDisplay } from '../lib/contact';
 
 const { brand, contact, footer } = site;
 
@@ -66,6 +66,19 @@ const legalLinks = footer.legalLinks as { label: string; href: string }[];
               {phone}
             </a>
           </li>
+          {
+            altPhone && (
+              <li>
+                <a
+                  href={altTel}
+                  class="inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem] transition-colors hover:text-gold"
+                >
+                  <Icon name="phone" size={17} class="shrink-0 text-gold" />
+                  {altPhone}
+                </a>
+              </li>
+            )
+          }
           <li>
             <a
               href={wa(`Hi ${brand.name}, I have a question.`)}
@@ -74,7 +87,7 @@ const legalLinks = footer.legalLinks as { label: string; href: string }[];
               class="inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem] transition-colors hover:text-gold"
             >
               <Icon name="whatsapp" size={17} class="shrink-0 text-gold" />
-              WhatsApp
+              WhatsApp {whatsappDisplay}
             </a>
           </li>
           {

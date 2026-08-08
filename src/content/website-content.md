@@ -19,7 +19,7 @@ tour packages Madurai · Madurai travel agency · bike trip packages Tamil Nadu 
 Home · Packages · Rentals · Why Us · Reviews · Contact
 → Right side button: **WhatsApp Us**
 
-**Floating button (mobile, bottom-right):** WhatsApp icon → `wa.me/916369153144`
+**Floating button (mobile, bottom-right):** WhatsApp icon → `wa.me/919342937594`
 
 ---
 
@@ -279,7 +279,7 @@ Grid of 8–12 real photos from your trips. Warkala cliffs, Goa beaches, Munnar 
 **H2:** Questions people ask
 
 **How do I book a package?**
-Message us on WhatsApp at 63691 53144 or call us directly. Tell us your destination, dates, and group size, and we'll send an itinerary and quote.
+Message us on WhatsApp at 93429 37594, or call us on 63691 53144. Tell us your destination, dates, and group size, and we'll send an itinerary and quote.
 
 **How much advance do I have to pay?**
 `[[TO CONFIRM]]`% of the total at the time of booking, with the balance due `[[TO CONFIRM]]`.
@@ -326,7 +326,8 @@ Packages · Rentals · Why Us · Contact
 
 **Column 3 — Contact**
 📞 63691 53144
-💬 WhatsApp
+📞 93429 37594
+💬 WhatsApp 93429 37594
 📧 `[[TO CONFIRM]] email address`
 📷 @pack_go_vaccation
 
