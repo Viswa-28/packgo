@@ -14,7 +14,7 @@ const offerKey = `pg-offer:${offer.expiresOn || 'none'}:${offer.text.slice(0, 40
 
 {
   show && (
-    <aside id="offer-banner" class="bg-gold text-forest-deep" aria-label="Current offer">
+    <aside id="offer-banner" class="bg-blue-deep text-white" aria-label="Current offer">
       <div class="container-x flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:gap-4">
         <p class="flex min-w-0 flex-1 items-start gap-2.5 text-[0.9375rem] leading-snug">
           <Icon name={offer.icon} size={20} class="mt-0.5 shrink-0" />
@@ -31,14 +31,14 @@ const offerKey = `pg-offer:${offer.expiresOn || 'none'}:${offer.text.slice(0, 40
             href={wa(offer.cta.message)}
             target="_blank"
             rel="noopener"
-            class="btn-base min-h-11 bg-forest px-4 text-[0.9375rem] text-cream hover:bg-forest-mid"
+            class="btn-base min-h-11 bg-navy px-4 text-[0.9375rem] text-soft hover:bg-navy-mid"
           >
             {offer.cta.label}
           </a>
           <button
             type="button"
             id="offer-dismiss"
-            class="grid size-11 shrink-0 place-items-center rounded-full transition-colors hover:bg-forest/15"
+            class="grid size-11 shrink-0 place-items-center rounded-full transition-colors hover:bg-navy/15"
             aria-label="Dismiss this offer"
           >
             <Icon name="close" size={20} />

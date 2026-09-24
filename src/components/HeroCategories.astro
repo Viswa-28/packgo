@@ -1,0 +1,60 @@
+---
+import data from '../content/destinations.json';
+import site from '../content/site.json';
+import Icon from './Icon.astro';
+
+const { categories, places } = data;
+const { heroPanel } = site;
+
+/**
+ * Each tile shows its category's real count and the first few place names from
+ * destinations.json — add a destination and the panel updates itself.
+ */
+const tiles = categories.map((c) => {
+  const matches = places.filter((p) => p.categories.includes(c.id));
+  return {
+    ...c,
+    count: matches.length,
+    sample: matches.slice(0, 2).map((p) => p.name).join(' · '),
+  };
+});
+
+const international = places.filter((p) => p.scope === 'international').length;
+const india = places.length - international;
+---
+
+<div class="reveal rounded-card border border-navy-mid/60 bg-navy-deep/55 p-4 sm:p-5">
+  <div class="flex items-baseline justify-between gap-3">
+    <h2 class="section-label text-sky">{heroPanel.label}</h2>
+    <p class="text-[0.875rem] text-soft/70">
+      {india} in India · {international} overseas
+    </p>
+  </div>
+
+  <ul class="mt-4 grid grid-cols-2 gap-2.5">
+    {
+      tiles.map((tile) => (
+        <li>
+          <a
+            href="#destinations"
+            class="flex h-full min-h-[92px] flex-col rounded-xl border border-navy-mid/70 bg-navy p-3 transition-colors hover:border-sky"
+          >
+            <span class="flex items-center gap-2 text-sky">
+              <Icon name={tile.icon} size={18} class="shrink-0" />
+              <span class="text-[0.9375rem] leading-none font-semibold text-soft">
+                {tile.label}
+              </span>
+              <span class="ml-auto text-[0.875rem] leading-none font-semibold">{tile.count}</span>
+            </span>
+            <span class="mt-2 text-[0.875rem] leading-snug text-soft/65">{tile.sample}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-4 flex items-center gap-2 text-[0.875rem] text-soft/75">
+    <Icon name="pin" size={16} class="shrink-0 text-sky" />
+    {heroPanel.footnote}
+  </p>
+</div>

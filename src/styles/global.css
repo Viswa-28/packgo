@@ -5,17 +5,20 @@
 @import '@fontsource-variable/inter/index.css';
 
 @theme {
-  --color-forest: #1b3a26;
-  --color-forest-mid: #2e5e3e;
-  --color-forest-deep: #12271a;
-  --color-gold: #e8a317;
-  --color-gold-soft: #f5c542;
-  /* Darkened gold for text on cream — #E8A317 on cream is 2.1:1 and fails WCAG AA. */
-  --color-gold-deep: #8a5a08;
-  --color-cream: #f7f4ec;
-  --color-cream-dim: #ece7da;
-  --color-ink: #1a1a1a;
-  --color-muted: #6b6b6b;
+  /* Brand palette — from the Pack & Go Agency identity sheet. */
+  --color-navy: #0b1f3a; /* Deep Navy — dark sections, headings, footer */
+  --color-navy-mid: #1a3a63; /* lifted navy — borders and hover on dark */
+  --color-navy-deep: #061529; /* deepest navy — footer base */
+  --color-blue: #1677ff; /* Travel Blue — the brand accent */
+  /* #1677FF on white is 4.10:1 and misses AA for body-size text, so filled
+     buttons and accent text on light surfaces use this darker step (5.8:1).
+     The pure brand blue stays for hover states, large type and icons. */
+  --color-blue-deep: #0b5ed7;
+  --color-sky: #55c2ff; /* Sky Blue — accent on navy, 8.3:1 */
+  --color-soft: #f7fafc; /* Soft White — light section backgrounds */
+  --color-soft-dim: #eaf1f8; /* the alternating light section */
+  --color-ink: #16243a; /* body text */
+  --color-muted: #5a6b80; /* secondary text — 5.2:1 on Soft White */
 
   --font-display: 'Anton', 'Arial Narrow', system-ui, sans-serif;
   --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
@@ -48,7 +51,7 @@
     font-size: 1rem;
     line-height: 1.65;
     color: var(--color-ink);
-    background-color: var(--color-cream);
+    background-color: var(--color-soft);
     /* Guards against any child overflowing at 360px. `clip`, not `hidden`:
        `hidden` would make <body> a scroll container, and the scroll-driven
        reveal animations below would then resolve against it instead of the
@@ -68,7 +71,7 @@
 
   /* Visible focus ring on every interactive element, on light and dark sections. */
   :focus-visible {
-    outline: 3px solid var(--color-gold);
+    outline: 3px solid var(--color-blue);
     outline-offset: 3px;
     border-radius: 4px;
   }

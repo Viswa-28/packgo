@@ -33,14 +33,6 @@ export const phoneLinks = [phoneLink, altPhone ? altPhoneLink : null].filter(Boo
 /** "Call 63691 53144" — used on the hero and final CTA. */
 export const callLabel = `Call ${phoneDisplay}`;
 
-/** Prices render as "From ₹X,XXX", or not at all when the value is unknown. */
-export function formatPrice(value) {
-  if (value === null || value === undefined || value === '') return null;
-  const n = Number(value);
-  if (!Number.isFinite(n)) return null;
-  return `From ₹${n.toLocaleString('en-IN')}`;
-}
-
 /** Drops the `_note` / `_howto` documentation keys out of rendered data. */
 export function clean(list) {
   return list.filter((item) => item && typeof item === 'object');

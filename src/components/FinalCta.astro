@@ -6,11 +6,11 @@ import { wa, tel, callLabel } from '../lib/contact';
 const { finalCta } = site;
 ---
 
-<section id="contact" class="relative overflow-hidden bg-forest-deep py-16 text-cream md:py-24">
+<section id="contact" class="relative overflow-hidden bg-navy-deep py-16 text-soft md:py-24">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.12]"
-    style="background-image:radial-gradient(circle at 1px 1px,#F5C542 1px,transparent 0);background-size:26px 26px;"
+    style="background-image:radial-gradient(circle at 1px 1px,#55C2FF 1px,transparent 0);background-size:26px 26px;"
   >
   </div>
 
@@ -18,21 +18,21 @@ const { finalCta } = site;
     <h2 class="mx-auto max-w-2xl text-[2.25rem] sm:text-5xl">
       {finalCta.heading}
     </h2>
-    <p class="mx-auto mt-4 max-w-lg text-[1.0625rem] text-cream/80">{finalCta.body}</p>
+    <p class="mx-auto mt-4 max-w-lg text-[1.0625rem] text-soft/80">{finalCta.body}</p>
 
     <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
       <a
         href={wa(finalCta.whatsapp.message)}
         target="_blank"
         rel="noopener"
-        class="btn-base bg-gold text-forest-deep shadow-lg shadow-black/25 hover:bg-gold-soft"
+        class="btn-base bg-blue-deep text-white shadow-lg shadow-black/25 hover:bg-blue"
       >
         <Icon name="whatsapp" size={20} />
         {finalCta.whatsapp.label}
       </a>
       <a
         href={tel}
-        class="btn-base border-2 border-cream/35 text-cream hover:border-gold hover:text-gold"
+        class="btn-base border-2 border-soft/35 text-soft hover:border-sky hover:text-sky"
       >
         <Icon name="phone" size={18} />
         {callLabel}

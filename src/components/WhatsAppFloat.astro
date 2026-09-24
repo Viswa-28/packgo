@@ -1,19 +1,20 @@
 ---
 import Icon from './Icon.astro';
+import site from '../content/site.json';
 import { wa } from '../lib/contact';
 
-const href = wa("Hi Pack & Go Vacation, I'd like to plan a trip.");
+const { floatCta } = site;
 ---
 
 {/* Mobile only. On desktop the header CTA is always in view.
      Wrapped in a landmark so the link isn't orphaned outside the page regions. */}
 <aside aria-label="Quick contact" class="md:hidden">
   <a
-    href={href}
+    href={wa(floatCta.message)}
     target="_blank"
     rel="noopener"
     class="fixed right-4 bottom-4 z-50 grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/25 transition-transform hover:scale-105"
-    aria-label="Chat with Pack and Go Vacation on WhatsApp"
+    aria-label={floatCta.ariaLabel}
   >
     <Icon name="whatsapp" size={30} />
   </a>

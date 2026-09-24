@@ -1,3 +1,8 @@
+> **Superseded.** This is the original brief from the Pack & Go *Vacation* tour-package
+> site. The live site is Pack & Go *Agency* and is organised around destinations by
+> category. Its copy lives in `site.json` and `destinations.json` — edit those, not this.
+> Kept only as a record of what was originally supplied.
+
 # Pack & Go Vacation — Single Page Website Content
 
 > **Legend:** `[[TO CONFIRM]]` = I invented nothing here; you must supply the real value before launch.

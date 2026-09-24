@@ -26,16 +26,16 @@ const resolved = await Promise.all(
 
 {
   resolved.length > 0 && (
-    <section id="gallery" class="bg-cream py-14 md:py-20">
+    <section id="gallery" class="bg-soft py-14 md:py-20">
       <div class="container-x">
         <div class="reveal">
-          <p class="section-label text-gold-deep">{gallerySection.label}</p>
-          <h2 class="mt-3 text-[2rem] text-forest sm:text-4xl">{gallerySection.heading}</h2>
+          <p class="section-label text-blue-deep">{gallerySection.label}</p>
+          <h2 class="mt-3 text-[2rem] text-navy sm:text-4xl">{gallerySection.heading}</h2>
         </div>
 
         <ul class="reveal-group mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {resolved.map(({ shot, image }, i) => (
-            <li class="overflow-hidden rounded-card bg-cream-dim">
+            <li class="overflow-hidden rounded-card bg-soft-dim">
               <Image
                 src={image}
                 alt={shot.alt}

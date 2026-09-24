@@ -8,30 +8,24 @@ import { wa, tel, phone } from '../lib/contact';
 const { nav, navCta, brand } = site;
 ---
 
-{/* Opaque, not translucent: gold-on-translucent-forest measures 4.29:1 over the
-     cream body and fails AA. Solid forest puts it at 5.8:1. */}
-<header class="sticky top-0 z-50 border-b border-forest-mid/40 bg-forest">
+{/* Opaque, not translucent. The wordmark is a transparent PNG cut from the
+     brand sheet, so the bar behind it has to stay a flat navy. */}
+<header class="sticky top-0 z-50 border-b border-navy-mid/40 bg-navy">
   <div class="container-x flex h-16 items-center justify-between gap-3 md:h-20">
     <a
       href="#top"
-      class="flex items-center gap-2.5 py-2 text-cream"
+      class="flex items-center gap-2.5 py-2 text-soft"
       aria-label={`${brand.name} — back to top`}
     >
       <Image
         src={logo}
-        alt=""
-        width={44}
-        height={44}
+        alt={`${brand.name}`}
+        width={161}
+        height={48}
         densities={[1, 2]}
         loading="eager"
-        class="size-10 shrink-0 md:size-11"
+        class="h-9 w-auto md:h-11"
       />
-      <span class="leading-none">
-        <span class="block font-display text-xl tracking-wide md:text-2xl">Pack &amp; Go</span>
-        <span class="mt-0.5 block text-sm font-semibold tracking-[0.18em] text-gold uppercase"
-          >Vacation</span
-        >
-      </span>
     </a>
 
     <nav aria-label="Primary" class="hidden lg:block">
@@ -41,7 +35,7 @@ const { nav, navCta, brand } = site;
             <li>
               <a
                 href={item.href}
-                class="inline-flex min-h-11 items-center rounded-full px-3.5 text-[15px] font-medium text-cream/90 transition-colors hover:bg-forest-mid hover:text-cream"
+                class="inline-flex min-h-11 items-center rounded-full px-3.5 text-[15px] font-medium text-soft/90 transition-colors hover:bg-navy-mid hover:text-soft"
               >
                 {item.label}
               </a>
@@ -54,8 +48,8 @@ const { nav, navCta, brand } = site;
     <div class="flex items-center gap-2">
       <a
         href={tel}
-        class="hidden min-h-11 items-center gap-2 rounded-full border border-cream/30 px-4 text-[15px] font-semibold text-cream transition-colors hover:border-gold hover:text-gold sm:inline-flex"
-        aria-label={`Call Pack and Go Vacation on ${phone}`}
+        class="hidden min-h-11 items-center gap-2 rounded-full border border-soft/30 px-4 text-[15px] font-semibold text-soft transition-colors hover:border-sky hover:text-sky sm:inline-flex"
+        aria-label={`Call Pack and Go Agency on ${phone}`}
       >
         <Icon name="phone" size={17} />
         <span class="hidden md:inline">{phone}</span>
@@ -65,7 +59,7 @@ const { nav, navCta, brand } = site;
         href={wa(navCta.message)}
         target="_blank"
         rel="noopener"
-        class="btn-base bg-gold px-4 text-[15px] text-forest-deep hover:bg-gold-soft"
+        class="btn-base bg-blue-deep px-4 text-[15px] text-white hover:bg-blue"
       >
         <Icon name="whatsapp" size={18} />
         <span class="hidden sm:inline">{navCta.label}</span>
@@ -75,7 +69,7 @@ const { nav, navCta, brand } = site;
       <button
         type="button"
         id="nav-toggle"
-        class="grid size-11 place-items-center rounded-full text-cream transition-colors hover:bg-forest-mid lg:hidden"
+        class="grid size-11 place-items-center rounded-full text-soft transition-colors hover:bg-navy-mid lg:hidden"
         aria-expanded="false"
         aria-controls="mobile-nav"
         aria-label="Open menu"
@@ -86,17 +80,17 @@ const { nav, navCta, brand } = site;
     </div>
   </div>
 
-  <nav id="mobile-nav" aria-label="Mobile" class="hidden border-t border-forest-mid/40 lg:hidden">
+  <nav id="mobile-nav" aria-label="Mobile" class="hidden border-t border-navy-mid/40 lg:hidden">
     <ul class="container-x py-2">
       {
         nav.map((item) => (
           <li>
             <a
               href={item.href}
-              class="flex min-h-12 items-center justify-between border-b border-forest-mid/25 text-cream/90 last:border-0"
+              class="flex min-h-12 items-center justify-between border-b border-navy-mid/25 text-soft/90 last:border-0"
             >
               {item.label}
-              <Icon name="arrow" size={16} class="text-gold" />
+              <Icon name="arrow" size={16} class="text-sky" />
             </a>
           </li>
         ))

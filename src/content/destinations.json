@@ -1,0 +1,369 @@
+{
+  "_howto": "Add a destination by appending one object to `places`. `categories` must use ids from the `categories` list above — a place can sit in more than one. `scope` is \"international\" or \"india\" and only drives the small badge on the card. Nothing here carries a price: quotes are given on WhatsApp, per the enquiry.",
+
+  "_todo": "Owner: trim this list to the destinations you actually sell. Every place left in the file appears on the site, so delete the ones you don't handle rather than leaving them up.",
+
+  "categories": [
+    {
+      "id": "food",
+      "label": "Food",
+      "heading": "Food & Street Eats",
+      "icon": "utensils",
+      "blurb": "Trips planned around the eating — markets, night stalls, regional kitchens."
+    },
+    {
+      "id": "culture",
+      "label": "Culture",
+      "heading": "Culture & Heritage",
+      "icon": "landmark",
+      "blurb": "Old cities, palaces, ruins and the people still living around them."
+    },
+    {
+      "id": "beaches",
+      "label": "Beaches",
+      "heading": "Beaches & Islands",
+      "icon": "palm",
+      "blurb": "Coastlines and islands, from easy weekends to long-haul water."
+    },
+    {
+      "id": "adventure",
+      "label": "Adventure",
+      "heading": "Adventure & Outdoors",
+      "icon": "compass",
+      "blurb": "Treks, rides, dives and anything that needs shoes you don't mind ruining."
+    },
+    {
+      "id": "nature",
+      "label": "Nature",
+      "heading": "Nature & Wildlife",
+      "icon": "leaf",
+      "blurb": "Hills, backwaters, forests and the slow end of the pace scale."
+    },
+    {
+      "id": "pilgrimage",
+      "label": "Pilgrimage",
+      "heading": "Temples & Pilgrimage",
+      "icon": "church",
+      "blurb": "Darshan circuits planned around timings, queues and older travellers."
+    }
+  ],
+
+  "places": [
+    {
+      "id": "bangkok",
+      "name": "Bangkok",
+      "region": "Thailand",
+      "scope": "international",
+      "categories": ["food", "culture"],
+      "tagline": "Street food capital, temple city, night markets.",
+      "highlights": [
+        "Yaowarat night food street and the floating markets",
+        "Grand Palace and Wat Pho",
+        "Easy add-on: Phuket or Krabi beaches"
+      ],
+      "bestTime": "Nov – Feb",
+      "message": "Hi, I'm interested in a Bangkok trip."
+    },
+    {
+      "id": "bali",
+      "name": "Bali",
+      "region": "Indonesia",
+      "scope": "international",
+      "categories": ["culture", "beaches", "nature"],
+      "tagline": "Rice terraces, temples and a coastline for every mood.",
+      "highlights": [
+        "Ubud rice terraces and the artisan villages",
+        "Uluwatu and Tanah Lot cliff temples",
+        "Nusa Penida day trip by fast boat"
+      ],
+      "bestTime": "Apr – Oct",
+      "message": "Hi, I'm interested in a Bali trip."
+    },
+    {
+      "id": "singapore",
+      "name": "Singapore",
+      "region": "Singapore",
+      "scope": "international",
+      "categories": ["food", "culture"],
+      "tagline": "The easiest first international trip for a family.",
+      "highlights": [
+        "Hawker centres — Indian, Malay and Chinese in one hall",
+        "Gardens by the Bay and Marina Bay at night",
+        "Sentosa and Universal Studios for kids"
+      ],
+      "bestTime": "Year round",
+      "message": "Hi, I'm interested in a Singapore trip."
+    },
+    {
+      "id": "kuala-lumpur",
+      "name": "Kuala Lumpur & Langkawi",
+      "region": "Malaysia",
+      "scope": "international",
+      "categories": ["food", "beaches"],
+      "tagline": "City food, then a flight to the islands.",
+      "highlights": [
+        "Petronas Towers and Batu Caves",
+        "Jalan Alor food street",
+        "Langkawi beaches and the SkyBridge cable car"
+      ],
+      "bestTime": "Dec – Mar",
+      "message": "Hi, I'm interested in a Malaysia trip."
+    },
+    {
+      "id": "dubai",
+      "name": "Dubai",
+      "region": "United Arab Emirates",
+      "scope": "international",
+      "categories": ["adventure", "culture"],
+      "tagline": "Desert, skyline and short flights from South India.",
+      "highlights": [
+        "Burj Khalifa and Dubai Mall",
+        "Desert safari with dune bashing",
+        "Old Dubai souks and the abra crossing"
+      ],
+      "bestTime": "Nov – Mar",
+      "message": "Hi, I'm interested in a Dubai trip."
+    },
+    {
+      "id": "maldives",
+      "name": "Maldives",
+      "region": "Maldives",
+      "scope": "international",
+      "categories": ["beaches"],
+      "tagline": "Water villas, or the cheaper local-island route.",
+      "highlights": [
+        "Resort or local-island stays — very different budgets",
+        "Snorkelling and reef trips from the island",
+        "Short flight from Kochi or Bengaluru"
+      ],
+      "bestTime": "Nov – Apr",
+      "message": "Hi, I'm interested in a Maldives trip."
+    },
+    {
+      "id": "sri-lanka",
+      "name": "Sri Lanka",
+      "region": "Colombo · Kandy · Ella",
+      "scope": "international",
+      "categories": ["culture", "nature"],
+      "tagline": "Hill country by train, close enough for a short trip.",
+      "highlights": [
+        "Kandy Temple of the Tooth",
+        "Ella to Kandy on the hill-country train",
+        "Sigiriya rock fortress"
+      ],
+      "bestTime": "Dec – Mar",
+      "message": "Hi, I'm interested in a Sri Lanka trip."
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "region": "Hanoi · Ha Long · Da Nang",
+      "scope": "international",
+      "categories": ["food", "nature"],
+      "tagline": "Big food, low costs, dramatic coastline.",
+      "highlights": [
+        "Ha Long Bay overnight cruise",
+        "Hanoi old quarter street food",
+        "Da Nang beaches and the Golden Bridge"
+      ],
+      "bestTime": "Feb – Apr",
+      "message": "Hi, I'm interested in a Vietnam trip."
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "region": "Kathmandu · Pokhara",
+      "scope": "international",
+      "categories": ["pilgrimage", "adventure"],
+      "tagline": "Pashupatinath darshan and the Annapurna foothills.",
+      "highlights": [
+        "Pashupatinath and Muktinath darshan",
+        "Pokhara lakes with Annapurna views",
+        "Short treks suited to first-timers"
+      ],
+      "bestTime": "Oct – Nov, Mar – Apr",
+      "message": "Hi, I'm interested in a Nepal trip."
+    },
+
+    {
+      "id": "goa",
+      "name": "Goa",
+      "region": "India",
+      "scope": "india",
+      "categories": ["beaches", "food"],
+      "tagline": "North for the noise, south for the quiet.",
+      "highlights": [
+        "North Goa and South Goa beaches",
+        "Old Goa churches and the Saturday night market",
+        "Seafood shacks and river cruises"
+      ],
+      "bestTime": "Nov – Feb",
+      "message": "Hi, I'm interested in a Goa trip."
+    },
+    {
+      "id": "kerala",
+      "name": "Munnar & Alleppey",
+      "region": "Kerala, India",
+      "scope": "india",
+      "categories": ["nature", "food"],
+      "tagline": "Tea hills and backwaters in one loop.",
+      "highlights": [
+        "Munnar tea estates and viewpoints",
+        "Alleppey backwater houseboat",
+        "Thekkady spice plantations and lake"
+      ],
+      "bestTime": "Sep – Mar",
+      "message": "Hi, I'm interested in a Kerala trip."
+    },
+    {
+      "id": "rajasthan",
+      "name": "Jaipur & Udaipur",
+      "region": "Rajasthan, India",
+      "scope": "india",
+      "categories": ["culture", "food"],
+      "tagline": "Forts, lake palaces and desert colour.",
+      "highlights": [
+        "Amber Fort, City Palace and Hawa Mahal",
+        "Udaipur lake palaces and boat rides",
+        "Extendable to Jaisalmer desert camps"
+      ],
+      "bestTime": "Oct – Mar",
+      "message": "Hi, I'm interested in a Rajasthan trip."
+    },
+    {
+      "id": "andaman",
+      "name": "Andaman Islands",
+      "region": "India",
+      "scope": "india",
+      "categories": ["beaches", "adventure"],
+      "tagline": "Indian passport, foreign water.",
+      "highlights": [
+        "Radhanagar Beach on Havelock",
+        "Scuba and snorkelling at Neil Island",
+        "Cellular Jail and the light-and-sound show"
+      ],
+      "bestTime": "Oct – May",
+      "message": "Hi, I'm interested in an Andaman trip."
+    },
+    {
+      "id": "himachal",
+      "name": "Manali & Kasol",
+      "region": "Himachal Pradesh, India",
+      "scope": "india",
+      "categories": ["adventure", "nature"],
+      "tagline": "Snow, river valleys and bike-able passes.",
+      "highlights": [
+        "Solang Valley and Atal Tunnel",
+        "Kasol and the Parvati valley",
+        "Bike-friendly routes up to Spiti in season"
+      ],
+      "bestTime": "Mar – Jun, Oct – Nov",
+      "message": "Hi, I'm interested in a Himachal trip."
+    },
+    {
+      "id": "kashmir",
+      "name": "Kashmir",
+      "region": "Srinagar · Gulmarg · Pahalgam, India",
+      "scope": "india",
+      "categories": ["nature"],
+      "tagline": "Shikaras, meadows and snow without a visa.",
+      "highlights": [
+        "Dal Lake houseboat and shikara ride",
+        "Gulmarg gondola",
+        "Pahalgam and the Betaab valley"
+      ],
+      "bestTime": "Mar – Oct",
+      "message": "Hi, I'm interested in a Kashmir trip."
+    },
+    {
+      "id": "meghalaya",
+      "name": "Meghalaya",
+      "region": "Shillong · Cherrapunji, India",
+      "scope": "india",
+      "categories": ["nature", "adventure"],
+      "tagline": "Living root bridges and the clearest river in India.",
+      "highlights": [
+        "Double-decker living root bridge trek",
+        "Dawki river and Mawlynnong village",
+        "Cherrapunji waterfalls and caves"
+      ],
+      "bestTime": "Oct – Apr",
+      "message": "Hi, I'm interested in a Meghalaya trip."
+    },
+    {
+      "id": "varanasi",
+      "name": "Varanasi",
+      "region": "Uttar Pradesh, India",
+      "scope": "india",
+      "categories": ["pilgrimage", "culture"],
+      "tagline": "Ganga aarti, ghats and the oldest streets in the country.",
+      "highlights": [
+        "Kashi Vishwanath darshan",
+        "Evening Ganga aarti at Dashashwamedh ghat",
+        "Sarnath day trip"
+      ],
+      "bestTime": "Oct – Mar",
+      "message": "Hi, I'm interested in a Varanasi trip."
+    },
+    {
+      "id": "temple-circuit",
+      "name": "Madurai & Rameswaram",
+      "region": "Tamil Nadu, India",
+      "scope": "india",
+      "categories": ["pilgrimage", "food", "culture"],
+      "tagline": "Our home circuit — and the one we know best.",
+      "highlights": [
+        "Meenakshi Amman Temple and Ramanathaswamy Temple",
+        "Kanyakumari sunrise point",
+        "Madurai food walk — jigarthanda, kari dosai, night eateries"
+      ],
+      "bestTime": "Oct – Mar",
+      "message": "Hi, I'm interested in the Madurai and Rameswaram circuit."
+    },
+    {
+      "id": "amritsar",
+      "name": "Amritsar",
+      "region": "Punjab, India",
+      "scope": "india",
+      "categories": ["food", "pilgrimage"],
+      "tagline": "Golden Temple, langar, and Punjabi food you plan a trip around.",
+      "highlights": [
+        "Golden Temple and the langar hall",
+        "Wagah border ceremony",
+        "Old-city food walk"
+      ],
+      "bestTime": "Oct – Mar",
+      "message": "Hi, I'm interested in an Amritsar trip."
+    },
+    {
+      "id": "hampi",
+      "name": "Hampi",
+      "region": "Karnataka, India",
+      "scope": "india",
+      "categories": ["culture", "adventure"],
+      "tagline": "A ruined empire spread across a boulder field.",
+      "highlights": [
+        "Virupaksha Temple and the Vittala stone chariot",
+        "Boulder sunsets at Matanga and Anjanadri hills",
+        "Cycle or scooter between the ruins"
+      ],
+      "bestTime": "Oct – Feb",
+      "message": "Hi, I'm interested in a Hampi trip."
+    },
+    {
+      "id": "coorg-ooty",
+      "name": "Coorg & Ooty",
+      "region": "Karnataka · Tamil Nadu, India",
+      "scope": "india",
+      "categories": ["nature", "food"],
+      "tagline": "The short hill break — coffee country and the Nilgiris.",
+      "highlights": [
+        "Coorg coffee estates and Abbey Falls",
+        "Ooty and Coonoor on the Nilgiri toy train",
+        "Kodaikanal as an alternative from Madurai"
+      ],
+      "bestTime": "Oct – May",
+      "message": "Hi, I'm interested in a Coorg or Ooty trip."
+    }
+  ]
+}

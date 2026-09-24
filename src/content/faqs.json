@@ -1,11 +1,15 @@
 [
   {
-    "q": "How do I book a package?",
-    "a": "Message us on WhatsApp at 93429 37594, or call us on 63691 53144. Tell us your destination, dates, and group size, and we'll send an itinerary and quote."
+    "q": "How do I book a trip?",
+    "a": "Message us on WhatsApp at 93429 37594, or call us on 63691 53144. Tell us the destination, your dates, and group size, and we'll send back an itinerary and a quote."
   },
   {
-    "q": "Can I customise a package?",
-    "a": "Yes. Every package on this page is a starting point. Add nights, change hotels, adjust the route — we'll requote."
+    "q": "Do you arrange international trips?",
+    "a": "Yes. The destinations marked International on this page are the ones we plan most often. Ask us about anywhere else and we'll tell you straight away whether we can handle it."
+  },
+  {
+    "q": "Can I change what's in a trip?",
+    "a": "Yes. Everything on this page is a starting point. Add nights, change hotels, adjust the route — we'll requote."
   },
   {
     "q": "Do you arrange trips for large groups?",
